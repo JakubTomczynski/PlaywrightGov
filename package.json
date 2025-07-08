@@ -1,5 +1,19 @@
 {
+  "scripts": {
+    "env:test": "cross-env test_env=test npx playwright test",
+    "env:staging": "cross-env test_env=feature npx playwright test",
+    "env:prod": "cross-env test_env=prod npx playwright test",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report"
+  },
   "devDependencies": {
-    "@types/node": "^24.0.10"
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.10",
+    "cross-env": "^7.0.3",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.1.0"
   }
 }
