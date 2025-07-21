@@ -1,8 +1,9 @@
-import { Page, test as base } from '@playwright/test';
+import { Page, test as base, request } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { Helper } from '../pages/common/helper';
 import { SearchBar } from '../pages/searchBar';
 import { BookmarksPage } from '../pages/bookmarksPage';
+import { ApiCheckPage } from '../pages/api/govcheckGET';
 
 export const test = base.extend<{
   page: Page;
@@ -10,6 +11,7 @@ export const test = base.extend<{
   helper: Helper;
   searchBar: SearchBar;
   bookmarksPage: BookmarksPage;
+  apiCheckPage: ApiCheckPage;
 }>({
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
@@ -22,5 +24,8 @@ export const test = base.extend<{
   },
   bookmarksPage: async ({ page }, use) => {
     await use(new BookmarksPage(page));
+  },
+  apiCheckPage: async ({}, use) => {
+    await use(new ApiCheckPage(await request.newContext()));
   },
 });

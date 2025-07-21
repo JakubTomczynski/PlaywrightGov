@@ -10,8 +10,10 @@ async function globalSetup(config: FullConfig) {
       override: true,
     });
     ENV.BASE_URL = process.env.BASE_URL;
+    ENV.API_URL = process.env.API_URL;
   } else {
     process.env.BASE_URL = 'https://www.gov.pl';
+    process.env.API_URL = 'https://www.gov.pl';
     console.log('jesssgit');
   }
 }
